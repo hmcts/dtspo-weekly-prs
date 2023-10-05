@@ -184,7 +184,7 @@ variables:
   - name: jenkins_url
     value: "http://jenkins.jenkins:8080/"
   - name: main_channel
-    value: jh-test-2
+    value: jh-test-1
   - name: pull_request_number
     value: $(system.pullRequest.pullRequestNumber)
 
