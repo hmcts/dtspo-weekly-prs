@@ -199,7 +199,7 @@ jobs:
         inputs:
           azureSubscription:  "DTS-CFTPTL-INTSVC"
           keyVaultName:   "cftptl-intsvc"
-          secretsFilter: 'dtspo-daily-checks-slack-webhook-url,dtspo-daily-checks-slack-bot-token,azure-devops-token,jira-password,jira-username,github-management-api-token,jenkins-api-user,jenkins-api-token,service-now-username,service-now-password,launchdarkly-access-token'
+          secretsFilter: 'dtspo-daily-checks-slack-webhook-url,dtspo-weekly-pr-bot-url,azure-devops-token,jira-password,jira-username,github-management-api-token,jenkins-api-user,jenkins-api-token,service-now-username,service-now-password,launchdarkly-access-token'
       - task: Bash@3
         displayName: 'Create a slack message file'
         inputs:
@@ -313,18 +313,10 @@ jobs:
           filePath: scripts/jira-status.sh
           arguments: $(jira-username) $(jira-password)
       - task: Bash@3
-        displayName: 'Send slack message - pull request'
-        condition: |
-          and(succeeded(), eq(variables['isMain'], false), eq(variables['isAutoTriggered'], true))
-        inputs:
-          targetType: filePath
-          filePath: scripts/send-slack-message-pr.sh
-          arguments: $(dtspo-daily-checks-slack-bot-token) ${{ variables.pull_request_number }} $(github-management-api-token)
-      - task: Bash@3
         displayName: 'Send slack message - master branch'
         condition: |
           and(succeeded(), eq(variables['isMain'], true))
         inputs:
           targetType: filePath
           filePath: scripts/send-slack-message.sh
-          arguments: $(dtspo-daily-checks-slack-webhook-url) ${{ variables.main_channel }}
+          arguments: $(dtspo-weekly-pr-bot-url) ${{ variables.main_channel }}
