@@ -208,10 +208,10 @@ jobs:
            echo "*Daily Monitoring Summary* \n \n">> slack-message.txt
            echo "_:azure: *Scheduled Pipelines Status*_ \n">> slack-message.txt
       - task: Bash@3
-        displayName: 'Checking Github Licenses'
+        displayName: 'Get PR's by user'
         inputs:
           targetType: filePath
-          filePath: scripts/github-licenses.sh
+          filePath: scripts/get-prs-by-user.sh
           arguments: $(github-management-api-token)
       - task: Bash@3
         displayName: 'Github workflow status header'
