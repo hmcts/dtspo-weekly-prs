@@ -207,7 +207,7 @@ jobs:
           script: |
             echo "*Weekly PR's by User* \n \n">> slack-message.txt
       - task: Bash@3
-        displayName: "Checking Github Licenses"
+        displayName: "Get PR's by user"
         inputs:
           targetType: filePath
           filePath: scripts/get-prs-by-user.sh
