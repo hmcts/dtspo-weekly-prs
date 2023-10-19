@@ -4,7 +4,13 @@ token=$1
 gh auth login --with-token ${token}
 repos=$(gh search prs  --owner hmcts --author app/renovate --state=open  --sort=created --json repository -L 300 | jq -r '. | unique_by(.repository.name)' | jq -r '.[].repository.name')
 respo+=($(gh search prs "[updatecli]" --owner hmcts  --state=open  --sort=created --json repository -L 300 | jq -r '. | unique_by(.repository.name)' | jq -r '.[].repository.name'))
-ghusers=('endakelly' 'JusticeCarl' 'louisehuyton' 'Tyler-35' 'cpareek' 'JordanHoey96')
+
+gh api \
+  -H "Accept: application/vnd.github+json" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  /orgs/ORG/teams/TEAM_SLUG/members >> slack-message.txt
+
+ghusers=('JordanHoey96')
 for ghuser in ${ghusers[@]}
 do
     echo $ghuser
