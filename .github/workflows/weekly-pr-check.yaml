@@ -16,6 +16,7 @@ jobs:
       #- name: Dump context
         #uses: crazy-max/ghaction-dump-context@v2
       - name: Get PR's by assignee
-        run: ./scripts/get-prs-by-user.sh
+        run: scripts/get-prs-by-user.sh
         env:
           GITHUB_TOKEN: ${{ env.GH_TOKEN }}
+          
