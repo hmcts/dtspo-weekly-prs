@@ -8,7 +8,7 @@ respo+=($(gh search prs "[updatecli]" --owner hmcts  --state=open  --sort=create
 gh api \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
-  /orgs/ORG/teams/TEAM_SLUG/members >> slack-message.txt
+  /orgs/HMCTS/teams/platops-blue/members >> slack-message.txt
 
 ghusers=('JordanHoey96')
 for ghuser in ${ghusers[@]}
