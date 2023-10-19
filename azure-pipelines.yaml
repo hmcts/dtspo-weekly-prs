@@ -206,7 +206,7 @@ jobs:
           targetType: "inline"
           script: |
             echo "*Weekly PR's by User* \n \n">> slack-message.txt
-      - task: PowerShell@2
+      - task: Bash@3
         displayName: "Get PR's by user"
         inputs:
           targetType: filePath

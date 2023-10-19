@@ -1,0 +1,22 @@
+name: Weekly PR check
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * 1' # Every Monday at 08:00
+  workflow_dispatch:
+env:
+  GH_TOKEN: ${{ secrets.PLATFORM_USER_TOKEN }}
+permissions:
+  id-token: write
+jobs:
+  weekly:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      #Uncomment for troubleshooting   
+      #- name: Dump context
+        #uses: crazy-max/ghaction-dump-context@v2
+      - name: Get PR's by assignee
+        run: ./scripts/get-prs-by-user.sh
+        env:
+          GITHUB_TOKEN: ${{ env.GH_TOKEN }}
