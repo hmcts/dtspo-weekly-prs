@@ -32,4 +32,4 @@ jobs:
           GITHUB_TOKEN: ${{ env.GH_TOKEN }}
 
       - name: Send slack message
-        run: ./scripts/send-slack-message.sh ${{ env.GH_TOKEN }} ${{ env.MAIN_CHANNEL }}
+        run: ./scripts/send-slack-message.sh ${{ env.WEBHOOK_URL_BLUE }} ${{ env.MAIN_CHANNEL }}
