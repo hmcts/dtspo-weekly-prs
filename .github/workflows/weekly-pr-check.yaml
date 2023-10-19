@@ -1,5 +1,6 @@
 name: Weekly PR check
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 8 * * 1' # Every Monday at 08:00
 env:
