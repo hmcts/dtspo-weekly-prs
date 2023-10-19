@@ -26,8 +26,8 @@ jobs:
       - name: Create a slack message file
         run: echo "*Weekly PR Summary* \n \n">> slack-message.txt
 
-      - name: Get PR's by assignee
-        run: ./scripts/get-prs-by-user.sh >> slack-message.txt
+      - name: PR of the week
+        run: ./scripts/reviewer-of-the-week.sh >> slack-message.txt
         env:
           GITHUB_TOKEN: ${{ env.GH_TOKEN }}
 
