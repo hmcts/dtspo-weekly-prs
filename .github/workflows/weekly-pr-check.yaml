@@ -15,6 +15,12 @@ jobs:
       #Uncomment for troubleshooting   
       #- name: Dump context
         #uses: crazy-max/ghaction-dump-context@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+          token: ${{ env.GH_TOKEN }}
+          
       - name: Get PR's by assignee
         run: ./scripts/get-prs-by-user.sh
         env:
