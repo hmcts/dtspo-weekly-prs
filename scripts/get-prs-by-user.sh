@@ -4,7 +4,7 @@ token=$1
 gh auth login --with-token ${token}
 repos=$(gh search prs  --owner hmcts --author app/renovate --state=open  --sort=created --json repository -L 300 | jq -r '. | unique_by(.repository.name)' | jq -r '.[].repository.name')
 respo+=($(gh search prs "[updatecli]" --owner hmcts  --state=open  --sort=created --json repository -L 300 | jq -r '. | unique_by(.repository.name)' | jq -r '.[].repository.name'))
-ghusers=('JordanHoey96')
+ghusers=('endakelly' 'JusticeCarl' 'louisehuyton' 'Tyler-35' 'cpareek' 'JordanHoey96')
 for ghuser in ${ghusers[@]}
 do
     echo $ghuser
