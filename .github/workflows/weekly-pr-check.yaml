@@ -5,6 +5,8 @@ on:
     - cron: '0 8 * * 1' # Every Monday at 08:00
 env:
   GH_TOKEN: ${{ secrets.PLATFORM_USER_TOKEN }}
+  WEBHOOK_URL_BLUE: ${{ secrets.DTSPO_WEEKLY_PR_BOT_URL }}
+  MAIN_CHANNEL: "jh-test-1"
 permissions:
   id-token: write
 jobs:
@@ -20,9 +22,14 @@ jobs:
         with:
           fetch-depth: '0'
           token: ${{ env.GH_TOKEN }}
-          
+
+      - name: Create a slack message file
+        run: echo "*Weekly PR Summary* \n \n">> slack-message.txt
+
       - name: Get PR's by assignee
-        run: ./scripts/get-prs-by-user.sh
+        run: ./scripts/get-prs-by-user.sh >> slack-message.txt
         env:
           GITHUB_TOKEN: ${{ env.GH_TOKEN }}
-          
+
+      - name: Send slack message
+        run: ./scripts/send-slack-message.sh ${{ env.GH_TOKEN }} ${{ env.MAIN_CHANNEL }}
