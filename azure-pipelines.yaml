@@ -211,6 +211,7 @@ jobs:
         inputs:
           targetType: "inline"
           script: |
+            apt update
             apt install gh
       - task: Bash@3
         displayName: "Get PR's by user"
