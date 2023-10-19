@@ -9,7 +9,7 @@ for ghuser in ${ghusers[@]}
 do
     echo $ghuser
     last100prs=$(gh search prs --reviewed-by $ghuser --json closedAt,url,title --sort updated --limit 10)
-    7DaysAgo=$(date +%F -d '7 days ago')
+    7DaysAgo=$(date --date='7 days ago')
     while read pr; do
         closedDateString=$(jq -r '.closedAt' <<< $pr)
         title=$(jq -r '.title' <<< $pr)
