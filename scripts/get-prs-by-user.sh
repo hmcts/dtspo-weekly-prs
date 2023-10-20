@@ -5,8 +5,7 @@ gh auth login --with-token ${token}
 repos=$(gh search prs  --owner hmcts --author app/renovate --state=open  --sort=created --json repository -L 300 | jq -r '. | unique_by(.repository.name)' | jq -r '.[].repository.name')
 respo+=($(gh search prs "[updatecli]" --owner hmcts  --state=open  --sort=created --json repository -L 300 | jq -r '. | unique_by(.repository.name)' | jq -r '.[].repository.name'))
 
-#ghusers=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /orgs/HMCTS/teams/platops-blue/members | jq -r '.[].login')
-ghusers=('JordanHoey96')
+ghusers=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /orgs/HMCTS/teams/platops-blue/members | jq -r '.[].login')
 
 for ghuser in ${ghusers[@]}
 do
