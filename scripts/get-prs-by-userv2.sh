@@ -9,5 +9,5 @@ ghusers=('JordanHoey96')
 for ghuser in ${ghusers[@]}
 do
     echo $ghuser
-    gh search prs  --owner hmcts --author app/renovate --state=open  --sort=created --review-requested $ghuser 
+    gh search prs  --owner hmcts --author app/renovate --state=open  --sort=created --review-requested $ghuser --json url
 done
