@@ -6,7 +6,7 @@ on:
 env:
   GH_TOKEN: ${{ secrets.PLATFORM_USER_TOKEN }}
   WEBHOOK_URL_BLUE: ${{ secrets.DTSPO_WEEKLY_PR_BOT_URL }}
-  MAIN_CHANNEL: "jh-test-1"
+  MAIN_CHANNEL: "smurf-chat"
 permissions:
   id-token: write
 jobs:
