@@ -2,7 +2,7 @@ name: Weekly PR check
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 7 * * 1' # Every Monday at 08:00 (GitHub is 1 hour behind)
+    - cron: '0 13 * * 1' # Every Monday at 14:00 (GitHub is 1 hour behind)
 env:
   GH_TOKEN: ${{ secrets.PLATFORM_USER_TOKEN }}
   WEBHOOK_URL_BLUE: ${{ secrets.DTSPO_WEEKLY_PR_BOT_URL }}
