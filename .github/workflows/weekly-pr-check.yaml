@@ -6,7 +6,8 @@ on:
 env:
   GH_TOKEN: ${{ secrets.PLATFORM_USER_TOKEN }}
   WEBHOOK_URL_BLUE: ${{ secrets.DTSPO_WEEKLY_PR_BOT_URL }}
-  MAIN_CHANNEL: "smurf-chat"
+  WEBHOOK_URL_TEST: ${{ secrets.DTSPO_WEEKLY_PR_BOT_TEST }}
+  MAIN_CHANNEL: "auto-shutdown"
 permissions:
   id-token: write
 jobs:
@@ -32,4 +33,4 @@ jobs:
           GITHUB_TOKEN: ${{ env.GH_TOKEN }}
 
       - name: Send slack message
-        run: ./scripts/send-slack-message.sh ${{ env.WEBHOOK_URL_BLUE }} ${{ env.MAIN_CHANNEL }}
+        run: ./scripts/send-slack-message.sh ${{ env.WEBHOOK_URL_TEST }} ${{ env.MAIN_CHANNEL }}
