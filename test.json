@@ -1,0 +1,61 @@
+{
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "You have a new request:\n*<https://github.com/hmcts/auto-shutdown/issues/318|CHG5015043>*"
+			}
+		},
+		{
+			"type": "section",
+			"fields": [
+				{
+					"type": "mrkdwn",
+					"text": "*Business Area:*\nCFT"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*When:*\nSubmitted Aug 10"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Start Date:*\n06-02-2024"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*End Date:*\n07-02-2024"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Value*\n£2,500"
+				}
+			]
+		},
+		{
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"emoji": true,
+						"text": "Approve"
+					},
+					"style": "primary",
+					"value": "click_me_123"
+				},
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"emoji": true,
+						"text": "Deny"
+					},
+					"style": "danger",
+					"value": "click_me_123"
+				}
+			]
+		}
+	]
+}
